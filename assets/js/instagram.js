@@ -1,11 +1,12 @@
+(function() {
 window.initInstagramDashboard = initInstagramDashboard;
 
 // --- SUMMARY CARDS CONFIG ---
 const summaryCardsConfig = [
     { label: "Total Followers", icon: "📈", iconClass: "blue", valueKey: "Total Followers" },
-    { label: "Page Views", icon: "👁️", iconClass: "green", valueKey: "Page Views" },
+    { label: "Profile Visits", icon: "👁️", iconClass: "green", valueKey: "Profile Visits" },
     { label: "New Followers", icon: "🆕", iconClass: "yellow", valueKey: "New Followers" },
-    { label: "Unique Visitors", icon: "👤", iconClass: "blue", valueKey: "Unique Visitors" }
+    { label: "Reach", icon: "👤", iconClass: "blue", valueKey: "Reach" }
 ];
 
 // --- RENDER SUMMARY CARDS ---
@@ -22,8 +23,8 @@ function renderSummaryGrid(data) {
         <div class="summary-card">
             <div class="summary-icon green">👁️</div>
             <div class="summary-content">
-                <div class="summary-value">${data["Page Views"]}</div>
-                <div class="summary-label">Page Views</div>
+                <div class="summary-value">${data["Profile Visits"]}</div>
+                <div class="summary-label">Profile Visits</div>
             </div>
         </div>
         <div class="summary-card">
@@ -36,8 +37,8 @@ function renderSummaryGrid(data) {
         <div class="summary-card">
             <div class="summary-icon blue">👤</div>
             <div class="summary-content">
-                <div class="summary-value">${data["Unique Visitors"]}</div>
-                <div class="summary-label">Unique Visitors</div>
+                <div class="summary-value">${data["Reach"]}</div>
+                <div class="summary-label">Reach</div>
             </div>
         </div>
     `;
@@ -56,9 +57,9 @@ function fetchSummaryData() {
             const idxYear = header.findIndex(h => h.trim().toLowerCase() === "year");
             const idxMonth = header.findIndex(h => h.trim().toLowerCase() === "month");
             const idxFollowers = header.findIndex(h => h.trim().toLowerCase().includes("total followers"));
-            const idxPageViews = header.findIndex(h => h.trim().toLowerCase().includes("page views"));
-            const idxNewFollowers = header.findIndex(h => h.trim().toLowerCase().includes("new followers"));
-            const idxUniqueVisitors = header.findIndex(h => h.trim().toLowerCase().includes("unique visitors"));
+            const idxPageViews = header.findIndex(h => h.trim().toLowerCase().includes("profile activity"));
+            const idxNewFollowers = header.findIndex(h => h.trim().toLowerCase().includes("follows"));
+            const idxUniqueVisitors = header.findIndex(h => h.trim().toLowerCase().includes("account reached"));
 
             function normalizeMonth(m) {
                 return (m || "").toLowerCase().replace(/[\s\.,']/g, "").replace(/24|25/g, "");
@@ -118,10 +119,11 @@ function fetchSummaryData() {
             // Prepare data for summary cards
             const data = {
                 "Total Followers": totalFollowers.toLocaleString(),
-                "Page Views": pageViews.toLocaleString(),
+                "Profile Visits": pageViews.toLocaleString(),
                 "New Followers": newFollowers.toLocaleString(),
-                "Unique Visitors": uniqueVisitors.toLocaleString()
+                "Reach": uniqueVisitors.toLocaleString()
             };
+            console.log('Final Instagram Summary Data:', data);
             renderSummaryGrid(data);
         }
     });
@@ -206,10 +208,10 @@ function fetchImpressionsData(callback) {
         const idxYear = header.findIndex(h => h.trim().toLowerCase() === "year");
         const idxMonth = header.findIndex(h => h.trim().toLowerCase() === "month");
         const idxType = header.findIndex(h => h.trim().toLowerCase() === "type");
-        const idxImpressions = header.findIndex(h => h.trim().toLowerCase().includes("impressions"));
-        const idxClicks = header.findIndex(h => h.trim().toLowerCase().includes("clicks"));
-        const idxReactions = header.findIndex(h => h.trim().toLowerCase().includes("reactions"));
-        const idxComments = header.findIndex(h => h.trim().toLowerCase().includes("comments"));
+        const idxImpressions = header.findIndex(h => h.trim().toLowerCase().includes("views"));
+        const idxClicks = header.findIndex(h => h.trim().toLowerCase().includes("profile visits"));
+        const idxReactions = header.findIndex(h => h.trim().toLowerCase().includes("accounts enagaged"));
+        const idxComments = header.findIndex(h => h.trim().toLowerCase().includes("engagement"));
 
         function normalizeMonth(m) {
             return (m || "").toLowerCase().replace(/[\s\.,']/g, "").replace(/24|25/g, "");
@@ -434,4 +436,4 @@ function attachChartistTooltips() {
         }
     });
 }
-
+})();

@@ -1,3 +1,4 @@
+(function() {
 // --- SUMMARY CARDS CONFIG ---
 const summaryCardsConfig = [
     { label: "Total Followers", icon: "📈", iconClass: "blue", valueKey: "Total Followers" },
@@ -433,4 +434,4 @@ function attachChartistTooltips() {
         }
     });
 }
-
+})();
