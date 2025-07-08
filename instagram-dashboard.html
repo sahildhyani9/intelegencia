@@ -1,0 +1,70 @@
+<!-- Only dashboard content, no <html>, <head>, <body>, sidebar, or scripts -->
+
+<!-- Filter Bar -->
+<div style="display: flex; align-items: center; margin-bottom: 30px;">
+    <label for="year-filter" style="font-weight:600; color:#44485a; margin-right:12px;">Year:</label>
+    <select id="year-filter" class="filter-select" style="margin-right:18px;">
+        <option value="all">All</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+    </select>
+    <label for="month-filter" style="font-weight:600; color:#44485a; margin-right:12px;">Month:</label>
+    <select id="month-filter" class="filter-select">
+        <option value="all">All</option>
+    </select>
+</div>
+
+<!-- Summary Cards -->
+<div id="summary-grid" class="summary-grid"></div>
+
+<!-- Metric Cards -->
+<div id="instagram-cards-root" class="metric-grid">
+    <div class="card">
+        <div class="card-title">Total Impressions</div>
+        <div class="card-value" id="total-impressions-value"></div>
+        <div class="card-sub">Sum of Impressions</div>
+        <div class="ct-chart" id="chart-impressions"></div>
+    </div>
+    <div class="card">
+        <div class="card-title">Impressions by Type of Post</div>
+        <div class="card-value"></div>
+        <div class="card-sub">Impressions per Type</div>
+        <div class="ct-chart" id="chart-type"></div>
+    </div>
+    <div class="card">
+        <div class="card-title">Total Clicks</div>
+        <div class="card-value" id="total-clicks-value"></div>
+        <div class="card-sub">Sum of Clicks</div>
+        <div class="ct-chart" id="chart-clicks"></div>
+    </div>
+    <div class="card">
+        <div class="card-title">Clicks by Type</div>
+        <div class="card-value"></div>
+        <div class="card-sub">Clicks per Type</div>
+        <div class="ct-chart" id="chart-clicks-type"></div>
+    </div>
+    <div class="card">
+        <div class="card-title">Total Reactions</div>
+        <div class="card-value" id="total-reactions-value"></div>
+        <div class="card-sub">Sum of Reactions</div>
+        <div class="ct-chart" id="chart-reactions"></div>
+    </div>
+    <div class="card">
+        <div class="card-title">Total Comments</div>
+        <div class="card-value" id="total-comments-value"></div>
+        <div class="card-sub">Sum of Comments</div>
+        <div class="ct-chart" id="chart-comments"></div>
+    </div>
+</div>
+
+<!-- Glossary Card -->
+<div class="card" style="margin-top:32px;">
+    <div class="card-title">Glossary</div>
+    <div class="card-sub" style="margin-bottom:0;">
+        <strong>Impressions:</strong> The total number of times your content (post, article, update, or ad) is displayed on someone's screen. This includes multiple views by the same user. It measures the reach of your content.<br><br>
+        <strong>Reactions:</strong> The total number of interactions (likes, comments, shares, and other reactions) your content receives. It indicates how engaging your content is to your audience.<br><br>
+        <strong>Clicks:</strong> The total number of times users click on your content, company page, or ad. This includes clicks on links, hashtags, your profile, or any other clickable element. It measures user interest and engagement.<br><br>
+        <strong>Page Views:</strong> The total number of times your LinkedIn page (company or personal) is viewed. This includes repeated views by the same user. It helps gauge the overall visibility of your page.<br><br>
+        <strong>Unique Visitors:</strong> The number of individual users who visit your LinkedIn page or content within a specific time frame. Unlike page views, this metric counts each user only once, regardless of how many times they visit. It provides insight into the size of your audience.
+    </div>
+</div>
